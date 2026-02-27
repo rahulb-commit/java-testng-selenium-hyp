@@ -1,0 +1,32 @@
+version: 0.1
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+
+# Requirement 2: Run on Linux
+runson: linux
+
+autosplit: true
+concurrency: 2
+
+# Requirement 3: Retry 3 times if test fails
+retryOnFailure: true
+maxRetries: 3
+
+# Requirement 1: Install dependencies before test
+pre:
+  - rm -rf .m2
+  - mvn -Dmaven.repo.local=.m2 dependency:resolve -U
+
+# Requirement 4: Delete demo.txt after test
+post:
+  - rm -f demo.txt
+
+testDiscovery:
+  type: raw
+  mode: static
+  command: echo "parallel.xml"
+
+testRunnerCommand: mvn test -Dsuite=$test -Dmaven.repo.local=.m2
+
+jobLabel: ["selenium", "java", "testng", "hyperexecute"]
