@@ -20,7 +20,7 @@ post:
 testDiscovery:
   type: raw
   mode: static
-  command: echo "parallel.xml"
+  command: echo parallel.xml
 
 testRunnerCommand: mvn test -Dsuite=$test
 
