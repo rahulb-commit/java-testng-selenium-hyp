@@ -6,15 +6,7 @@
 	<artifactId>Java-TestNG-Selenium</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<build>
-		<sourceDirectory>Java-TestNG-Selenium/src</sourceDirectory>
-		<resources>
-			<resource>
-				<directory>Java-TestNG-Selenium/src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -30,7 +22,6 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<!--suppress UnresolvedMavenProperty -->
 						<suiteXmlFile>${suite}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
@@ -38,13 +29,11 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<!-- Selenium 3.x - Last version compatible with Java 8 -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.141.59</version>
 		</dependency>
-		<!-- TestNG 7.4.0 - Compatible with Java 8 -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
