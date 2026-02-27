@@ -9,14 +9,13 @@ runson: linux
 autosplit: true
 concurrency: 2
 
-# Requirement 3: Retry 3 times if test fails
+# Requirement 3: Retry 3 times on failure
 retryOnFailure: true
 maxRetries: 3
 
 # Requirement 1: Install dependencies before test
 pre:
-  - rm -rf .m2
-  - mvn -Dmaven.repo.local=.m2 dependency:resolve -U
+  - mvn dependency:resolve -U
 
 # Requirement 4: Delete demo.txt after test
 post:
@@ -25,8 +24,8 @@ post:
 testDiscovery:
   type: raw
   mode: static
-  command: echo "parallel.xml"
+  command: ls parallel.xml mobile.xml
 
-testRunnerCommand: mvn test -Dsuite=$test -Dmaven.repo.local=.m2
+testRunnerCommand: mvn test -Dsuite=$test
 
 jobLabel: ["selenium", "java", "testng", "hyperexecute"]
